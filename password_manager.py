@@ -22,8 +22,9 @@ while True:
     user_password = input("Enter password: ")
 
     details = {
-      "ID" : next_id,
+      "id" : next_id,
       "website": user_website,
+      "username": user_name,
       "password": user_password
     }
     passwords.append(details)
@@ -32,16 +33,15 @@ while True:
 
   elif choice == "2":
     for details in passwords:
-      print("ID: " , next_id)
-      print("Website: " , user_website)
-      print("Name: " , user_name)
-
-      passcode = input("Enter safe code to access pasword: ")
-      if passcode == master_pin:
-        print("Password: " , user_password)
+      if len(passwords) == 0:
+        print("No data")
       else:
-        print("Wrong code\n Password: ***********")
+        print("ID: " , details["id"])
+        print("Website: " , details["website"])
+        print("Name: " , details["username"])
+        print("password: *********")
 
   elif choice == "8":
     print("See you later")
     break
+
