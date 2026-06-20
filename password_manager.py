@@ -41,6 +41,38 @@ while True:
         print("Name: " , details["username"])
         print("password: *********")
 
+  elif choice == "3":
+    print("1. Search by ID")
+    pirnt("2. Search by Website")
+    print()
+    search = input("Search by: ")
+    if search == "1":
+      for details in passwords:
+        passwrd = input("Enter password ID: ")
+        found = False
+        if details["id"] == passwrd:
+          found = True
+          print("Found")
+          print("ID: " , details["id"])
+          print("Website: " , details["website"])
+          print("Name: " , details["username"])
+          print("Password: *******")
+      if not found:
+        print("No password record")
+      
+    elif search == "2":
+      for details in passwords:
+        passwrd = input("Enter wedsite: ")
+        found = False
+        if details["website"] = passwrd:
+          found = True
+          if len(details["website"] > 1:
+            print(len(details["website"]) , "websites found")
+          print("ID: " , details["id"])
+          print("Website: " , details["website"])
+          print("Name: " , details["username"])
+          print("Password: ******")
+
   elif choice == "8":
-    print("See you later")
+    print("See you later") 
     break
