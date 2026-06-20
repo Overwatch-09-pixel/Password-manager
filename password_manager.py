@@ -32,10 +32,10 @@ while True:
     print(f"Student ID: {next_id}")
 
   elif choice == "2":
-    for details in passwords:
-      if len(passwords) == 0:
-        print("No data")
-      else:
+    if len(passwords) == 0:
+      print("No data")
+    else:  
+      for details in passwords:
         print("ID: " , details["id"])
         print("Website: " , details["website"])
         print("Name: " , details["username"])
@@ -44,4 +44,3 @@ while True:
   elif choice == "8":
     print("See you later")
     break
-
