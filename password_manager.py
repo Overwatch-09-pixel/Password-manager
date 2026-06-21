@@ -7,10 +7,12 @@ master_pin = input("Create Master PIN: ")
 print("Select one of the options bellow")
 passwords = []
 next_id = 0
+count = 0
 
 while True:
   print("1. Add password")
-  print("2. View password")
+  print("2. View passwords")
+  print("3. Search password")
   print("8. Exit")
 
   choice = input("Selected choice: ")
@@ -43,7 +45,7 @@ while True:
 
   elif choice == "3":
     print("1. Search by ID")
-    pirnt("2. Search by Website")
+    print("2. Search by Website")
     print()
     search = input("Search by: ")
     if search == "1":
@@ -64,14 +66,18 @@ while True:
       for details in passwords:
         passwrd = input("Enter wedsite: ")
         found = False
-        if details["website"] = passwrd:
+        if details["website"] == passwrd:
           found = True
-          if len(details["website"] > 1:
-            print(len(details["website"]) , "websites found")
-          print("ID: " , details["id"])
-          print("Website: " , details["website"])
-          print("Name: " , details["username"])
-          print("Password: ******")
+          if len(details["website"]) > 1:
+            print(len(details["website"]) , "acounts found")
+            for details in passwords:
+              if details["website"] == search_website:
+                count += 1
+                print(details["username"])
+                print("ID: " , details["id"])
+                print("Website: " , details["website"])
+                print("Name: " , details["username"])
+                print("Password: ******")
 
   elif choice == "8":
     print("See you later") 
