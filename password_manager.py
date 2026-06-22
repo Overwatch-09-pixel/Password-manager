@@ -30,7 +30,7 @@ while True:
     }
     passwords.append(details)
     print("Details added successfully")
-    print(f"Student ID: {next_id}")
+    print(f"Passeord ID: {next_id}")
 
   elif choice == "2":
     if len(passwords) == 0:
@@ -58,11 +58,12 @@ while True:
           print("Website: " , details["website"])
           print("Name: " , details["username"])
           print("Password: *******")
-        else:
-          print("No password record")
+          break
+      if not found:
+        print("No password record")
       
     elif search == "2":
-      search_website = input("Enter wedsite: ")
+      search_website = input("Enter website: ")
       matches = []
       for details in passwords:
           if details["website"] == search_website:
@@ -79,7 +80,7 @@ while True:
           print("Accounts found:")
           count = 1
           for account in matches:
-            Print(count, "." , account["username"])
+            print(count, "." , account["username"])
             count += 1
           try:
               selection = int(input("Select account: "))
@@ -87,7 +88,7 @@ while True:
                 chosen = matches[selection - 1]
                 print("ID: " , chosen["id"])
                 print("Website: " , chosen["website"])
-                print("Name: " , chosen["name"])
+                print("Name: " , chosen["username"])
                 print("Password: ******")
               else:
                 print("Account number not available")
