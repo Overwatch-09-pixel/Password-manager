@@ -30,7 +30,7 @@ while True:
     }
     passwords.append(details)
     print("Details added successfully")
-    print(f"Passeord ID: {next_id}")
+    print(f"Password ID: {next_id}")
 
   elif choice == "2":
     if len(passwords) == 0:
