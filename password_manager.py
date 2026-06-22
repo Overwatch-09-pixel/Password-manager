@@ -7,7 +7,6 @@ master_pin = input("Create Master PIN: ")
 print("Select one of the options bellow")
 passwords = []
 next_id = 0
-count = 0
 
 while True:
   print("1. Add password")
@@ -49,9 +48,9 @@ while True:
     print()
     search = input("Search by: ")
     if search == "1":
+      passwrd = input("Enter password ID: ")
+      found = False
       for details in passwords:
-        passwrd = input("Enter password ID: ")
-        found = False
         if details["id"] == passwrd:
           found = True
           print("Found")
@@ -59,25 +58,41 @@ while True:
           print("Website: " , details["website"])
           print("Name: " , details["username"])
           print("Password: *******")
-      if not found:
-        print("No password record")
+        else:
+          print("No password record")
       
     elif search == "2":
       for details in passwords:
-        passwrd = input("Enter wedsite: ")
+        search_website = input("Enter wedsite: ")
         found = False
-        if details["website"] == passwrd:
-          found = True
-          if len(details["website"]) > 1:
-            print(len(details["website"]) , "acounts found")
-            for details in passwords:
-              if details["website"] == search_website:
+        matches = []
+        count = 0
+        for details in passwords:
+          if details["website"] == search_website:
+            found = True
+            matches.append(details["website"])
+            if len(matches) == 0:
+              print("Website not found")
+            elif len(matches) == 1:
+              print("ID: " , details["id"])
+              print("Website: " , details["website"])
+              print("Name: " , details["username"])
+              print("Password: ******")
+            elif len(matches) > 1:
+              print("Accounts found: ")
+              for account in matches:
                 count += 1
-                print(details["username"])
-                print("ID: " , details["id"])
-                print("Website: " , details["website"])
-                print("Name: " , details["username"])
-                print("Password: ******")
+                print(account["username"])
+                selection = input("Select account: ")
+                if selection > 1 and selection <= len(matches):
+                  matches[selection - 1]
+                  print("ID: " , account["id"])
+                  print("Website: " , account["website"])
+                  print("Name: " , account["name"])
+                  print("Password: ******")
+          if not found:
+            print("Account number not available")
+            print("Only" , len(matches), "accounts are available")
 
   elif choice == "8":
     print("See you later") 
