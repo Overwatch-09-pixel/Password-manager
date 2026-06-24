@@ -96,6 +96,22 @@ while True:
           except ValueError:
             print("Invalid input")
 
+  elif choice == "4":
+    password_id = int(input("Password ID: "))
+    found = False
+    for details in passwords:
+      if password_id == details["id"]:
+        found = True
+        for r in range(3):
+          PIN = input("Enter Master PIN: ")
+          attempts_left = 2-r
+          if PIN != master_pin:
+            print("incorrect! try again\nAttempts left" , attempts_left)
+          elif PIN == master_pin:
+            print("Password: " , details["password"])
+      else:
+        print("Wrong PIN\nReturning to menu")
+
   elif choice == "8":
     print("See you later") 
     break
