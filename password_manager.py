@@ -111,25 +111,24 @@ while True:
           attempts_left = 2-r
           if PIN != master_pin:
             print("incorrect! try again\nAttempts left" , attempts_left)
-          elif PIN == master_pin:
-            print("Password: " , details["password"])
+            access_granted = False
+            print("Access denied\nReturning to menu...")
             break
-          else:
-            print("Wrong PIN\nReturning to menu")
+          elif PIN == master_pin:
+            access_granted = True
+            print("Password: " , details["password"])
             break
     if not found:
       print("No records") 
 
   elif choice == "5":
-    with open("passwords.json" , "w") as file
-    for details in passwords:
-      json.dump(passwords , file)
-      print("Saved successfully!")
+    with open("passwords.json" , "w") as file:
+        json.dump(passwords , file)
+        print("Saved successfully!")
 
   elif choice == "6":
     passwords.clear()
-    with open("passwords.json" , r) as file:
-      for line in file:
+    with open("passwords.json" , "r") as file:
         passwords = json.load(file)
       print(len(passwords) , "loaded")
 
