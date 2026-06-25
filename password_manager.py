@@ -1,3 +1,4 @@
+import json
 
 print("=== PASSWORD MANAGER ===")
 print("Welcome")
@@ -12,6 +13,9 @@ while True:
   print("1. Add password")
   print("2. View passwords")
   print("3. Search password")
+  print("4. Reveal password")
+  print("5. Save password(s)")
+  print("6. Load password(s)")
   print("8. Exit")
 
   choice = input("Selected choice: ")
@@ -109,8 +113,25 @@ while True:
             print("incorrect! try again\nAttempts left" , attempts_left)
           elif PIN == master_pin:
             print("Password: " , details["password"])
-      else:
-        print("Wrong PIN\nReturning to menu")
+            break
+          else:
+            print("Wrong PIN\nReturning to menu")
+            break
+    if not found:
+      print("No records") 
+
+  elif choice == "5":
+    with open("passwords.json" , "w") as file
+    for details in passwords:
+      json.dump(passwords , file)
+      print("Saved successfully!")
+
+  elif choice == "6":
+    passwords.clear()
+    with open("passwords.json" , r) as file:
+      for line in file:
+        passwords = json.load(file)
+      print(len(passwords) , "loaded")
 
   elif choice == "8":
     print("See you later") 
