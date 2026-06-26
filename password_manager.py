@@ -1,9 +1,15 @@
 import json
+try:
+  with open("passwords.json" , "r") as file:
+    passwords = json.load(file)
+    print(len(passwords) , "Passwords loaded")
+except FileNotFoundError:
+  print("No records, starting afresh")
 
 print("=== PASSWORD MANAGER ===")
 print("Welcome")
 
-master_pin = input("Create Master PIN: ")
+master_pin = input("Create master PIN: ")
 
 print("Select one of the options bellow")
 passwords = []
@@ -36,7 +42,7 @@ while True:
     print("Details added successfully")
     print(f"Password ID: {next_id}")
 
-  elif choice == "2":
+  elif choice == "2":                            
     if len(passwords) == 0:
       print("No data")
     else:  
@@ -65,7 +71,7 @@ while True:
           break
       if not found:
         print("No password record")
-      
+                                              
     elif search == "2":
       search_website = input("Enter website: ")
       matches = []
@@ -123,14 +129,8 @@ while True:
 
   elif choice == "5":
     with open("passwords.json" , "w") as file:
-        json.dump(passwords , file)
-        print("Saved successfully!")
-
-  elif choice == "6":
-    passwords.clear()
-    with open("passwords.json" , "r") as file:
-        passwords = json.load(file)
-      print(len(passwords) , "loaded")
+      json.dump(passwords, file)
+      print("Passwords saved successfully")
 
   elif choice == "8":
     print("See you later") 
