@@ -1,4 +1,7 @@
 import json
+
+passwords = []
+
 try:
   with open("passwords.json" , "r") as file:
     passwords = json.load(file)
@@ -12,13 +15,13 @@ print("Welcome")
 master_pin = input("Create master PIN: ")
 
 print("Select one of the options bellow")
-passwords = []
 next_id = 0
+largest = 0
 
 for details in passwords:
-  largest = 0
   if details["id"] > largest:
-    next_id = largest
+    largest = details["id"]
+next_id = largest
 
 while True:
   print("1. Add password")
