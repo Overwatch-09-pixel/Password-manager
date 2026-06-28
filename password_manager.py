@@ -147,12 +147,16 @@ while True:
     for details in passwords:
       if details["id"] == pass_id:
         found = True
-        m_pin = input("Enter master PIN: ")
-        if m_pin == master_pin:
+        for i in range(3):
+          m_pin = input("Enter master PIN: ")
+          if m_pin == master_pin:
             new_password = input("New password: ")
-            details["password"] == new_password
-        else:
-          print("Wrong pin")
+            details["password"] = new_password
+            print("Password updated successfully!")
+            break
+          else:
+            print("Wrong pin")
+            break
     if not found:
       print("No password record found!")
 
@@ -162,11 +166,15 @@ while True:
     for details in passwords:
       if details["id"] == to_delete:
         found = True
-        pass_pin = input("Master PIN: ")
-        if pass_pin == master_pin:
-          passwords.remove(details)
-        else:
-          print("Wrong pin")
+        for i in range(3):
+          pass_pin = input("Master PIN: ")
+          if pass_pin == master_pin:
+            passwords.remove(details)
+            print("Password deleted!")
+            break
+          else:
+            print("Wrong pin")
+            break
     if not found:
       print("No password records found!")
 
