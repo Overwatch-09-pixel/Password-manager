@@ -157,7 +157,8 @@ while True:
             print("Password updated successfully!")
             break
           elif m_pin != master_pin:
-            print("Wrong pin, try again\nAttempts left: " , access_granted)
+            print("Wrong pin, try again\nAttempts left: " , attempts_left)
+          else:
             access_granted =False
             print("Failed!")
             break
@@ -180,6 +181,7 @@ while True:
             break
           elif pass_pin != master_pin:
             print("Wrong pin, try again\nAttempts left: " , attempts_left)
+          else:
             access_granted = False
             print("Failed!")
             break
