@@ -15,14 +15,18 @@ print("Select one of the options bellow")
 passwords = []
 next_id = 0
 
+for details in passwords:
+  largest = 0
+  if details["id"] > largest:
+    next_id = largest
+
 while True:
   print("1. Add password")
   print("2. View passwords")
   print("3. Search password")
   print("4. Reveal password")
   print("5. Save password(s)")
-  print("6. Load password(s)")
-  print("8. Exit")
+  print("7. Exit")
 
   choice = input("Selected choice: ")
 
