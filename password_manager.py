@@ -29,7 +29,9 @@ while True:
   print("3. Search password")
   print("4. Reveal password")
   print("5. Save password(s)")
-  print("7. Exit")
+  print("6. Update password")
+  print("7. Delete password")
+  print("8. Exit")
 
   choice = input("Selected choice: ")
 
@@ -139,6 +141,35 @@ while True:
       json.dump(passwords, file)
       print("Passwords saved successfully")
 
+  elif choice == "6":
+    pass_id = int(input("Password ID: "))
+    found = False
+    for details in passwords:
+      if details["id"] == pass_id:
+        found = True
+        m_pin = input("Enter master PIN: ")
+        if m_pin == master_pin:
+            new_password = input("New password: ")
+            details["password"] == new_password
+        else:
+          print("Wrong pin")
+    if not found:
+      print("No password record found!")
+
   elif choice == "7":
+    to_delete = int(input("Enter password ID: "))
+    found = False
+    for details in passwords:
+      if details["id"] == to_delete:
+        found = True
+        pass_pin = input("Master PIN: ")
+        if pass_pin == master_pin:
+          passwords.remove(details)
+        else:
+          print("Wrong pin")
+    if not found:
+      print("No password records found!")
+
+  elif choice == "8":
     print("See you later") 
     break
