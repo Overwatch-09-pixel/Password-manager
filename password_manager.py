@@ -149,13 +149,17 @@ while True:
         found = True
         for i in range(3):
           m_pin = input("Enter master PIN: ")
+          attempts_left = 2-i
           if m_pin == master_pin:
+            access_granted = True
             new_password = input("New password: ")
             details["password"] = new_password
             print("Password updated successfully!")
             break
-          else:
-            print("Wrong pin")
+          elif m_pin != master_pin:
+            print("Wrong pin, try again\nAttempts left: " , access_granted)
+            access_granted =False
+            print("Failed!")
             break
     if not found:
       print("No password record found!")
@@ -168,12 +172,16 @@ while True:
         found = True
         for i in range(3):
           pass_pin = input("Master PIN: ")
+          attempts_left = 2-i
           if pass_pin == master_pin:
+            access_granted = True
             passwords.remove(details)
             print("Password deleted!")
             break
-          else:
-            print("Wrong pin")
+          elif pass_pin != master_pin:
+            print("Wrong pin, try again\nAttempts left: " , attempts_left)
+            access_granted = False
+            print("Failed!")
             break
     if not found:
       print("No password records found!")
