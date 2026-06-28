@@ -136,6 +136,6 @@ while True:
       json.dump(passwords, file)
       print("Passwords saved successfully")
 
-  elif choice == "8":
+  elif choice == "7":
     print("See you later") 
     break
