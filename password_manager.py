@@ -159,7 +159,7 @@ while True:
             break
           elif m_pin != master_pin:
             print("Wrong pin, try again\nAttempts left: " , attempts_left)
-          if not access_granted:
+        if not access_granted:
             print("Failed!")
             break
     if not found:
@@ -182,7 +182,7 @@ while True:
             break
           elif pass_pin != master_pin:
             print("Wrong pin, try again\nAttempts left: " , attempts_left)
-          if not access_granted:
+        if not access_granted:
             print("Failed!")
             break
     if not found:
