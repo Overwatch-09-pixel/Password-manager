@@ -126,7 +126,8 @@ while True:
           PIN = input("Enter Master PIN: ")
           attempts_left = 2-r
           if PIN != master_pin:
-            print("incorrect!\nAttempts left" , attempts_left)
+            if attempts_left > 0:
+              print("incorrect!\nAttempts left" , attempts_left)
           elif PIN == master_pin:
             access_granted = True
             print("Password: " , details["password"])
@@ -147,7 +148,7 @@ while True:
     for details in passwords:
       if details["id"] == pass_id:
         found = True
-        access_granted = none
+        access_granted = False
         for i in range(3):
           m_pin = input("Enter master PIN: ")
           attempts_left = 2-i
@@ -158,7 +159,8 @@ while True:
             print("Password updated successfully!")
             break
           elif m_pin != master_pin:
-            print("Wrong pin\nAttempts left: " , attempts_left)
+            if attempts_left > 0:
+              print("Wrong pin\nAttempts left: " , attempts_left)
         if not access_granted:
             print("Access denied. Returning to menu")
             break
