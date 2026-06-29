@@ -121,18 +121,18 @@ while True:
     for details in passwords:
       if password_id == details["id"]:
         found = True
+        access_granted = False
         for r in range(3):
           PIN = input("Enter Master PIN: ")
           attempts_left = 2-r
           if PIN != master_pin:
-            print("incorrect! try again\nAttempts left" , attempts_left)
-            access_granted = False
-            print("Access denied\nReturning to menu...")
-            break
+            print("incorrect!\nAttempts left" , attempts_left)
           elif PIN == master_pin:
             access_granted = True
             print("Password: " , details["password"])
             break
+        if not access_granted:
+          print("Access denied. Returning to menu")
     if not found:
       print("No records") 
 
@@ -158,9 +158,9 @@ while True:
             print("Password updated successfully!")
             break
           elif m_pin != master_pin:
-            print("Wrong pin, try again\nAttempts left: " , attempts_left)
+            print("Wrong pin\nAttempts left: " , attempts_left)
         if not access_granted:
-            print("Failed!")
+            print("Access denied. Returning to menu")
             break
     if not found:
       print("No password record found!")
@@ -171,7 +171,7 @@ while True:
     for details in passwords:
       if details["id"] == to_delete:
         found = True
-        access_granted = none
+        access_granted = False
         for i in range(3):
           pass_pin = input("Master PIN: ")
           attempts_left = 2-i
@@ -181,9 +181,9 @@ while True:
             print("Password deleted!")
             break
           elif pass_pin != master_pin:
-            print("Wrong pin, try again\nAttempts left: " , attempts_left)
+            print("Wrong pin\nAttempts left: " , attempts_left)
         if not access_granted:
-            print("Failed!")
+            print("Access denied. Returning to menu.")
             break
     if not found:
       print("No password records found!")
